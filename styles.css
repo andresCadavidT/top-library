@@ -1,0 +1,11 @@
+.box-library{
+    height: 50vh;
+    width: 50vw;
+    background-color: grey;
+}
+
+
+.title{
+    color: black;
+    font-size: 5rem;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="box-library">
+        <div class="book">
+            
+        </div>
+    </div>
+    <form id="newBookForm" action="">
+        <div>
+            <label for="userTitle">Title:</label>
+            <input type="text" name="userTitle" id="userTitle">
+        </div>
+        <div>
+            <label for="userAuthor">Author:</label>
+            <input type="text" name="userAuthor" id="userAuthor">
+        </div>
+        <div>
+            <fieldset>
+            <legend>Have you read the book?</legend>
+                <label for="readNo">
+                    <input id="readNo" type="radio" name="read">
+                    No
+                </label>
+                    <label for="" id="readYes">
+                        <input id="readYes" type="radio" name="read">
+                    Yes
+                </label>
+            </fieldset>
+        </div>
+        <div>
+            <button>Make the Book</button>
+        </div>
+    </form>
+</body>
+</html>
