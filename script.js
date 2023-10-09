@@ -55,13 +55,15 @@ function display(){
             // Agrega un boton para indicar si esta leido o no
             let toggleReadButton = document.createElement("button")
             toggleReadButton.classList.add(`toggleReadButton`)
-                toggleReadButton.addEventListener("click", (event)=>{
-                    event.preventDefault()
-                    readStatus = readStatus == "Pendiente" ? "Leido" : "Pendiente";
-                    divRead.textContent = readStatus
-                    elem.read = elem.read == "true" ? "false" : "true";
-                })
-            toggleReadButton.textContent = "read?"
+            let initialToggleBottonText = elem.read == "true"? "Marcar como pendiente": "Marcar como leido"
+            toggleReadButton.textContent = initialToggleBottonText
+            toggleReadButton.addEventListener("click", (event)=>{
+                event.preventDefault()
+                readStatus = readStatus == "Pendiente" ? "Leido" : "Pendiente";
+                divRead.textContent = readStatus
+                elem.read = elem.read == "true" ? "false" : "true";
+                toggleReadButton.textContent = toggleReadButton.textContent == "Marcar como pendiente"?  "Marcar como leido": "Marcar como pendiente"; 
+            })
     
 
         divTitle.textContent = elem.title
