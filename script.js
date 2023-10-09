@@ -11,64 +11,47 @@ class Book{
     }
 }
 
+handerListernerForm()
+
 // Una funcion qu permita recibir los input del usuario y crea un book, 
 // lo envia al array de books
-const formBook = document.getElementById("newBookForm")
 
-formBook.addEventListener("submit", function(event){
-    event.preventDefault()
-    let newBookFormTitle = document.getElementById("userTitle").value
-    let newBookFormAuthor = document.getElementById("userAuthor").value
-    let newBookFormRead = document.querySelector('input[name="read"]:checked').value
-    let newBook = new Book(newBookFormTitle, newBookFormAuthor, newBookFormRead)
-    books.push(newBook)
-    display()
-})
+function handerListernerForm(){
+    const formBook = document.getElementById("newBookForm")
 
-// Una funcion que haga un loop sobre el array de libros y 
-// lo muestre en pantalla. 
+    formBook.addEventListener("submit", function(event){
+        event.preventDefault()
+        let newBookFormTitle = document.getElementById("userTitle").value
+        let newBookFormAuthor = document.getElementById("userAuthor").value
+        let newBookFormRead = document.querySelector('input[name="read"]:checked').value
+        // crea libro nuevo
+        let newBook = new Book(newBookFormTitle, newBookFormAuthor, newBookFormRead)
+        books.push(newBook)
+        createBookAndDisplay(newBook)
+    })
+}
 
-function display(){
-    const boxLibrary = document.querySelector(".box-library")
-    boxLibrary.innerHTML = ""
-    books.forEach((elem, index)=>{
-        let readStatus = elem.read == "true" ? "Leido" : "Pendiente";
+
+// Crea e inserta en el DOM el libro nuevo 
+
+function createBookAndDisplay(newBook){
         let divMain = document.createElement("div")
         let divTitle = document.createElement("div")
         let divAuthor = document.createElement("div")
         let divRead = document.createElement("div")
+        let toggleReadButton = document.createElement("button")
+        let deleteButton = document.createElement("button")
+
         divMain.classList.add("bookMain")
         divTitle.classList.add("bookTitle")
-        divAuthor.classList.add("booAuthor")
-        divRead.classList.add("bookRead")
+        divAuthor.classList.add("bookAuthor")
+        divRead.classList.add("bookRead")    
 
-            // Agrega un boton en cada libro que esta en pantalla para remover ese libro 
-            let deleteButton = document.createElement("button")
-            deleteButton.classList.add(`bookDelete`)
-            deleteButton.addEventListener("click", (event)=>{
-                event.preventDefault()
-                divMain.remove()     
-                books.splice(index,1)        
-            })
-            deleteButton.textContent = "x"
-    
-            // Agrega un boton para indicar si esta leido o no
-            let toggleReadButton = document.createElement("button")
-            toggleReadButton.classList.add(`toggleReadButton`)
-            let initialToggleBottonText = elem.read == "true"? "Marcar como pendiente": "Marcar como leido"
-            toggleReadButton.textContent = initialToggleBottonText
-            toggleReadButton.addEventListener("click", (event)=>{
-                event.preventDefault()
-                readStatus = readStatus == "Pendiente" ? "Leido" : "Pendiente";
-                divRead.textContent = readStatus
-                elem.read = elem.read == "true" ? "false" : "true";
-                toggleReadButton.textContent = toggleReadButton.textContent == "Marcar como pendiente"?  "Marcar como leido": "Marcar como pendiente"; 
-            })
-    
-
-        divTitle.textContent = elem.title
-        divAuthor.textContent = elem.author
-        divRead.textContent = readStatus
+        divTitle.textContent = newBook.title
+        divAuthor.textContent = newBook.author
+        divRead.textContent = newBook.read == "true" ? "Leido" : "No leido";
+        deleteButton.textContent = "x"
+        toggleReadButton.textContent = newBook.read == "true"? "Marcar como No leido": "Marcar como leido";
 
         divMain.appendChild(divTitle)
         divMain.appendChild(divAuthor)
@@ -76,11 +59,16 @@ function display(){
         divMain.appendChild(deleteButton)
         divMain.appendChild(toggleReadButton)
 
+        deleteButton.addEventListener("click", ()=>{
+            divMain.remove()
+        })
+
+        toggleReadButton.addEventListener("click", ()=>{
+            newBook.read = newBook.read == "true"? "false": "true";
+            toggleReadButton.textContent = newBook.read === "true"? "Marcar como No leido": "Marcar como leido";
+            divRead.textContent = newBook.read == "true" ? "Leido" : "No leido";
+        })
+
+        const boxLibrary = document.querySelector(".box-library")
         boxLibrary.appendChild(divMain)
-    })
 }
-
-
-
-
-
