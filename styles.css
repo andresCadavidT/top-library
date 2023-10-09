@@ -1,9 +1,18 @@
-.box-library{
-    height: 50vh;
-    width: 50vw;
-    background-color: grey;
+body{
+    display: grid;
+    padding: 0px;
+    margin: 0px;
 }
 
+.box-library{
+    margin: 0 auto;
+    display: grid;
+    width: 80vw;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr ));
+    background-color: grey;
+    padding: 10px;
+    gap:20px;
+}
 
 .title{
     color: black;
