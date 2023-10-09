@@ -9,28 +9,34 @@
 </head>
 <body>
     <div class="box-library">
-        <div class="book">
+        <div class="title">
+            
+        </div>
+        <div class="author">
+            
+        </div>
+        <div class="read">
             
         </div>
     </div>
     <form id="newBookForm" action="">
         <div>
             <label for="userTitle">Title:</label>
-            <input type="text" name="userTitle" id="userTitle">
+            <input type="text" name="userTitle" id="userTitle"  placeholder="Some Title">
         </div>
         <div>
             <label for="userAuthor">Author:</label>
-            <input type="text" name="userAuthor" id="userAuthor">
+            <input type="text" name="userAuthor" id="userAuthor" placeholder="Sr Author">
         </div>
         <div>
             <fieldset>
             <legend>Have you read the book?</legend>
                 <label for="readNo">
-                    <input id="readNo" type="radio" name="read">
+                    <input id="readNo" type="radio" name="read" value=false>
                     No
                 </label>
-                    <label for="" id="readYes">
-                        <input id="readYes" type="radio" name="read">
+                    <label for="readYes">
+                        <input id="readYes" type="radio" name="read" value=true>
                     Yes
                 </label>
             </fieldset>

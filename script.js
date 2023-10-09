@@ -4,10 +4,10 @@ const books = []
 
 // Se necesita entonces un constructor para esos book.
 class Book{
-    constructor(title, author){
+    constructor(title, author, read){
         this.title = title
         this.author = author
-        this.readed = undefined
+        this.read = read
     }
 }
 
@@ -19,19 +19,66 @@ formBook.addEventListener("submit", function(event){
     event.preventDefault()
     let newBookFormTitle = document.getElementById("userTitle").value
     let newBookFormAuthor = document.getElementById("userAuthor").value
-    let newBook = new Book(newBookFormTitle, newBookFormAuthor)
+    let newBookFormRead = document.querySelector('input[name="read"]:checked').value
+    let newBook = new Book(newBookFormTitle, newBookFormAuthor, newBookFormRead)
     books.push(newBook)
+    display()
 })
-
-const boxLibrary = document.querySelector(".box-library")
-
 
 // Una funcion que haga un loop sobre el array de libros y 
 // lo muestre en pantalla. 
 
-// Agrega un boton en cada libro que esta en pantalla para remover ese libro 
+function display(){
+    const boxLibrary = document.querySelector(".box-library")
+    boxLibrary.innerHTML = ""
+    books.forEach((elem, index)=>{
+        let readStatus = elem.read == "true" ? "Leido" : "Pendiente";
+        let divMain = document.createElement("div")
+        let divTitle = document.createElement("div")
+        let divAuthor = document.createElement("div")
+        let divRead = document.createElement("div")
+        divMain.classList.add("bookMain")
+        divTitle.classList.add("bookTitle")
+        divAuthor.classList.add("booAuthor")
+        divRead.classList.add("bookRead")
 
-// agrega un boton que cambia el estado del libro de leido. 
+            // Agrega un boton en cada libro que esta en pantalla para remover ese libro 
+            let deleteButton = document.createElement("button")
+            deleteButton.classList.add(`bookDelete`)
+            deleteButton.addEventListener("click", (event)=>{
+                event.preventDefault()
+                divMain.remove()     
+                books.splice(index,1)        
+            })
+            deleteButton.textContent = "x"
+    
+            // Agrega un boton para indicar si esta leido o no
+            let toggleReadButton = document.createElement("button")
+            toggleReadButton.classList.add(`toggleReadButton`)
+                toggleReadButton.addEventListener("click", (event)=>{
+                    event.preventDefault()
+                    readStatus = readStatus == "Pendiente" ? "Leido" : "Pendiente";
+                    divRead.textContent = readStatus
+                    elem.read = elem.read == "true" ? "false" : "true";
+                })
+            toggleReadButton.textContent = "read?"
+    
+
+        divTitle.textContent = elem.title
+        divAuthor.textContent = elem.author
+        divRead.textContent = readStatus
+
+        divMain.appendChild(divTitle)
+        divMain.appendChild(divAuthor)
+        divMain.appendChild(divRead)
+        divMain.appendChild(deleteButton)
+        divMain.appendChild(toggleReadButton)
+
+        boxLibrary.appendChild(divMain)
+    })
+}
+
+
 
 
 
