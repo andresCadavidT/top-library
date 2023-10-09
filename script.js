@@ -28,6 +28,10 @@ function handerListernerForm(){
         let newBook = new Book(newBookFormTitle, newBookFormAuthor, newBookFormRead)
         books.push(newBook)
         createBookAndDisplay(newBook)
+        let inputTitle = document.getElementById("userTitle")
+        let inputAuthor = document.getElementById("userAuthor")
+        inputTitle.value = ""
+        inputAuthor.value = ""
     })
 }
 
