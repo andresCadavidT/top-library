@@ -8,19 +8,18 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-
     <form id="newBookForm" action="">
-        <div>
+        <div class="formLabelInput">
             <label for="userTitle">Title:</label>
             <input type="text" name="userTitle" id="userTitle"  placeholder="Some Title">
         </div>
-        <div>
+        <div class="formLabelInput">
             <label for="userAuthor">Author:</label>
             <input type="text" name="userAuthor" id="userAuthor" placeholder="Sr Author">
         </div>
-        <div>
-            <fieldset>
-            <legend>Have you read the book?</legend>
+        <div class="box-form-read">
+            <fieldset class="fielset-read">
+            <legend class="legend-form">Have you read the book?</legend>
                 <label for="readNo">
                     <input id="readNo" type="radio" name="read" value=false>
                     No
@@ -32,7 +31,7 @@
             </fieldset>
         </div>
         <div>
-            <button>Make the Book</button>
+            <button>Add Book</button>
         </div>
     </form>
     <div class="box-library">

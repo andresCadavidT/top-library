@@ -1,17 +1,105 @@
+:root{
+    --main-color: rgb(68, 19, 19);
+}
+
 body{
     display: grid;
     padding: 0px;
     margin: 0px;
+    
+    font-size: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form{
+    border: 1px  solid;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: rgb(68, 19, 19, 1);
+    color: white;
+    font-weight: 400;
+}
+
+.box-form-read{
+    display: flex;
+    justify-content: center;
+    width: clamp(100px, 180px, 180px);
+    border: 2px white solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.fielset-read{
+    color: white;
+    border: none;
+    font-size: 0.8rem;
+}
+
+.legend-form{
+    color: rgb(255, 255, 255);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.formLabelInput{
+    display: flex;
+    justify-content: right;    
+}
+
+.formLabelInput label{
+    margin: 10px;
+}
+.formLabelInput input{
+    border: 1px var(--main-color) solid;
+    border-radius: 5px;
+    background-color: rgb(235, 235, 235);
+    padding: 3px;
+    margin: 5px;
+    overflow: auto;
+}
+
+.formLabelInput label::placeholder, .formLabelInput input::placeholder{
+    color: rgb(68, 19, 19, 0,2);
+}
+
+button{
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid white ;
+    color: var(--main-color);
+    font-weight: 700;
+    font-size: 0.7rem;
+    margin: 6px
 }
 
 .box-library{
     margin: 0 auto;
     display: grid;
-    width: 80vw;
+    width: 90vw;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr ));
-    background-color: grey;
+    background-color: rgb(255, 223, 223);
+    border-radius: 5px;
     padding: 10px;
     gap:20px;
+}
+
+.bookMain{
+    padding: 10px;
+    border: 1px var(--main-color) solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.bookTitle{
+    overflow: auto;
+}
+
+.bookAuthor{
+    overflow: auto;
 }
 
 .title{
