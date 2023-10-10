@@ -8,32 +8,36 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <form id="newBookForm" action="">
-        <div class="formLabelInput">
-            <label for="userTitle">Title:</label>
-            <input type="text" name="userTitle" id="userTitle"  placeholder="Some Title">
-        </div>
-        <div class="formLabelInput">
-            <label for="userAuthor">Author:</label>
-            <input type="text" name="userAuthor" id="userAuthor" placeholder="Sr Author">
-        </div>
-        <div class="box-form-read">
-            <fieldset class="fielset-read">
-            <legend class="legend-form">Have you read the book?</legend>
-                <label for="readNo">
-                    <input id="readNo" type="radio" name="read" value=false>
-                    No
-                </label>
-                    <label for="readYes">
-                        <input id="readYes" type="radio" name="read" value=true>
-                    Yes
-                </label>
-            </fieldset>
-        </div>
-        <div>
-            <button>Add Book</button>
-        </div>
-    </form>
+    <dialog id="idDialog">
+        <form id="newBookForm" action="">
+            <div class="formLabelInput">
+                <label for="userTitle">Title:</label>
+                <input type="text" name="userTitle" id="userTitle"  placeholder="Some Title">
+            </div>
+            <div class="formLabelInput">
+                <label for="userAuthor">Author:</label>
+                <input type="text" name="userAuthor" id="userAuthor" placeholder="Sr Author">
+            </div>
+            <div class="box-form-read">
+                <fieldset class="fielset-read">
+                <legend class="legend-form">Have you read the book?</legend>
+                    <label for="readNo">
+                        <input id="readNo" type="radio" name="read" value=false>
+                        No
+                    </label>
+                        <label for="readYes">
+                            <input id="readYes" type="radio" name="read" value=true>
+                        Yes
+                    </label>
+                </fieldset>
+            </div>
+            <div>
+                <button>Add Book</button>
+            </div>
+            <button type="button" class="closeDialog" formmethod="dialog">x</button>
+        </form>
+    </dialog>
+    <button class="openDialog">Click To Add a Book</button>
     <div class="box-library">
 
     </div>

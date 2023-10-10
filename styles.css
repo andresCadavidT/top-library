@@ -76,6 +76,8 @@ button{
     margin: 6px
 }
 
+
+
 .box-library{
     margin: 0 auto;
     display: grid;
@@ -105,4 +107,31 @@ button{
 .title{
     color: black;
     font-size: 5rem;
+}
+
+
+/* ----------- Dialog Styles ------------- */
+#idDialog{
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(223, 223, 223, 0,5);
+
+}
+
+
+#idDialog::backdrop{
+    background-color: rgb(224, 224, 224, 0,5)
+    }
+
+
+.openDialog{
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid white ;
+    color: var(--main-color);
+    font-weight: 600;
+    font-size: 0.7rem;
+    background-color: var(--main-color);
+    color: white;
 }

@@ -76,3 +76,18 @@ function createBookAndDisplay(newBook){
         const boxLibrary = document.querySelector(".box-library")
         boxLibrary.appendChild(divMain)
 }
+
+
+let dialog = document.querySelector("#idDialog")
+let openDialog = document.querySelector(".openDialog")
+let closeDialog = document.querySelector(".closeDialog")
+
+openDialog.addEventListener("click", ()=>{
+    dialog.showModal()
+})
+
+closeDialog.addEventListener("click", ()=>{
+    dialog.close()
+})
+
+
