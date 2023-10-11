@@ -11,34 +11,34 @@
     <dialog id="idDialog">
         <form id="newBookForm" action="">
             <div class="formLabelInput">
-                <label for="userTitle">Title:</label>
-                <input type="text" name="userTitle" id="userTitle"  placeholder="Some Title">
+                <label for="userTitle">Title: *</label>
+                <input type="text" name="userTitle" id="userTitle"  placeholder="Some Title" required>
             </div>
             <div class="formLabelInput">
-                <label for="userAuthor">Author:</label>
-                <input type="text" name="userAuthor" id="userAuthor" placeholder="Sr Author">
+                <label for="userAuthor">Author: *</label>
+                <input type="text" name="userAuthor" id="userAuthor" placeholder="Sr Author" required>
             </div>
             <div class="box-form-read">
                 <fieldset class="fielset-read">
-                <legend class="legend-form">Have you read the book?</legend>
+                <legend class="legend-form">Have you read the book? *</legend>
                     <label for="readNo">
-                        <input id="readNo" type="radio" name="read" value=false>
+                        <input id="readNo" type="radio" name="read" value=false required>
                         No
                     </label>
                         <label for="readYes">
-                            <input id="readYes" type="radio" name="read" value=true>
+                            <input id="readYes" type="radio" name="read" value=true required>
                         Yes
                     </label>
                 </fieldset>
             </div>
             <div>
-                <button>Add Book</button>
+                <button type="submit" class="btnAddBook">Add Book</button>
             </div>
             <button type="button" class="closeDialog" formmethod="dialog">x</button>
         </form>
     </dialog>
     <button class="openDialog">Click To Add a Book</button>
-    <div class="box-library">
+    <div id="displayCard">
 
     </div>
 </body>

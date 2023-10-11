@@ -6,7 +6,6 @@ body{
     display: grid;
     padding: 0px;
     margin: 0px;
-    
     font-size: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -26,7 +25,7 @@ form{
 .box-form-read{
     display: flex;
     justify-content: center;
-    width: clamp(100px, 180px, 180px);
+    width: clamp(100px, 190px, 190px);
     border: 2px white solid;
     border-radius: 5px;
     padding: 5px;
@@ -76,9 +75,7 @@ button{
     margin: 6px
 }
 
-
-
-.box-library{
+#displayCard{
     margin: 0 auto;
     display: grid;
     width: 90vw;
@@ -89,6 +86,29 @@ button{
     gap:20px;
 }
 
+.cardWithBook{
+    padding: 10px;
+    border: 1px var(--main-color) solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.title{
+    overflow: auto;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.author{
+    overflow: auto;
+    font-size: 1rem;
+}
+
+.read{
+    font-size: 0.9rem;
+}
+
+/* 
 .bookMain{
     padding: 10px;
     border: 1px var(--main-color) solid;
@@ -107,7 +127,7 @@ button{
 .title{
     color: black;
     font-size: 5rem;
-}
+} */
 
 
 /* ----------- Dialog Styles ------------- */

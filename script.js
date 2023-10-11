@@ -1,7 +1,5 @@
-
 // Books sera un array con todos mis objetos de libro.
 const books = []
-
 // Se necesita entonces un constructor para esos book.
 class Book{
     constructor(title, author, read){
@@ -9,75 +7,78 @@ class Book{
         this.author = author
         this.read = read
     }
+    createCardWithBooknDisplay(){
+        let boxTitle = document.createElement("p")
+        boxTitle.setAttribute("class", "title")
+        boxTitle.textContent = this.title
+
+        let boxAuthor = document.createElement("p")
+        boxAuthor.setAttribute("class", "author")
+        boxAuthor.textContent = this.author
+
+        let boxRead = document.createElement("div")
+        boxRead.setAttribute("class", "read")
+        console.log("AQUI: " + this.read + typeof(this.read))
+        boxRead.textContent = this.read == true ? "Read" : "Unread";
+
+        let cardWithBook = document.createElement("div")
+        cardWithBook.setAttribute("class", "cardWithBook")
+        cardWithBook.appendChild(boxTitle)
+        cardWithBook.appendChild(boxAuthor)
+        cardWithBook.appendChild(boxRead)
+
+        let displayCard = document.getElementById("displayCard")
+        displayCard.appendChild(cardWithBook)
+
+        this.createDeleteButton(cardWithBook, displayCard)
+        this.createToggleReadButton(cardWithBook, boxRead)
+        dialog.close()
+    }
+    createDeleteButton(cardWithBook, displayCard){
+        let buttonDelete = document.createElement("button")
+        cardWithBook.appendChild(buttonDelete)
+        buttonDelete.setAttribute("type", "button")
+        buttonDelete.textContent = "x"
+        buttonDelete.addEventListener("click", ()=>{
+            displayCard.removeChild(cardWithBook)
+            books.splice((books.indexOf(this)),1)
+        })
+    }
+    createToggleReadButton(cardWithBook, boxRead){
+        let buttonToggleRead = document.createElement("button")
+        buttonToggleRead.setAttribute("type", "button")
+        buttonToggleRead.textContent = this.read ==  true ? "Mark as Unread" : "Mark as Read"
+        buttonToggleRead.addEventListener("click", (event)=>{
+            this.read = this.read == true? false : true;
+            boxRead.textContent = this.read == true? "Read": "Unread";
+            buttonToggleRead.textContent = this.read == true ? "Mark as Unread" : "Mark as Read"
+        })
+        cardWithBook.appendChild(buttonToggleRead)
+    }
 }
 
-handerListernerForm()
-
-// Una funcion qu permita recibir los input del usuario y crea un book, 
+// permita recibir los input del usuario y crea un book, 
 // lo envia al array de books
 
-function handerListernerForm(){
-    const formBook = document.getElementById("newBookForm")
-
-    formBook.addEventListener("submit", function(event){
+const formBook = document.getElementById("newBookForm")
+formBook.addEventListener("submit", function(event){
         event.preventDefault()
-        let newBookFormTitle = document.getElementById("userTitle").value
-        let newBookFormAuthor = document.getElementById("userAuthor").value
-        let newBookFormRead = document.querySelector('input[name="read"]:checked').value
+        let inputFormTitle = document.getElementById("userTitle").value
+        let inputFormAuthor = document.getElementById("userAuthor").value
+        let inputFormRead = document.querySelector('input[name="read"]:checked').value
+        let inputReadBoolean = inputFormRead == "true"? true : false;
         // crea libro nuevo
-        let newBook = new Book(newBookFormTitle, newBookFormAuthor, newBookFormRead)
-        books.push(newBook)
-        createBookAndDisplay(newBook)
+        let aBook = new Book(inputFormTitle, inputFormAuthor, inputReadBoolean)
+        console.log(aBook.read)
+        aBook.createCardWithBooknDisplay()
+        books.push(aBook)
         let inputTitle = document.getElementById("userTitle")
         let inputAuthor = document.getElementById("userAuthor")
         inputTitle.value = ""
         inputAuthor.value = ""
-    })
-}
+})
 
-
-// Crea e inserta en el DOM el libro nuevo 
-
-function createBookAndDisplay(newBook){
-        let divMain = document.createElement("div")
-        let divTitle = document.createElement("div")
-        let divAuthor = document.createElement("div")
-        let divRead = document.createElement("div")
-        let toggleReadButton = document.createElement("button")
-        let deleteButton = document.createElement("button")
-
-        divMain.classList.add("bookMain")
-        divTitle.classList.add("bookTitle")
-        divAuthor.classList.add("bookAuthor")
-        divRead.classList.add("bookRead")    
-
-        divTitle.textContent = newBook.title
-        divAuthor.textContent = newBook.author
-        divRead.textContent = newBook.read == "true" ? "Leido" : "No leido";
-        deleteButton.textContent = "x"
-        toggleReadButton.textContent = newBook.read == "true"? "Marcar como No leido": "Marcar como leido";
-
-        divMain.appendChild(divTitle)
-        divMain.appendChild(divAuthor)
-        divMain.appendChild(divRead)
-        divMain.appendChild(deleteButton)
-        divMain.appendChild(toggleReadButton)
-
-        deleteButton.addEventListener("click", ()=>{
-            divMain.remove()
-        })
-
-        toggleReadButton.addEventListener("click", ()=>{
-            newBook.read = newBook.read == "true"? "false": "true";
-            toggleReadButton.textContent = newBook.read === "true"? "Marcar como No leido": "Marcar como leido";
-            divRead.textContent = newBook.read == "true" ? "Leido" : "No leido";
-        })
-
-        const boxLibrary = document.querySelector(".box-library")
-        boxLibrary.appendChild(divMain)
-}
-
-
+// Genera un dialog para el anterior form
 let dialog = document.querySelector("#idDialog")
 let openDialog = document.querySelector(".openDialog")
 let closeDialog = document.querySelector(".closeDialog")
